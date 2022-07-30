@@ -22,6 +22,7 @@
 
 static int slices = 16;
 static int stacks = 16;
+//angela added
 
 /* GLUT callback Handlers */
 
