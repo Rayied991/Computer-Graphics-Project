@@ -26,7 +26,7 @@ static int stacks = 16;
 
 
 
-//Mohi Added
+///Mohi Added
 ///Mostafizur
 
 /* GLUT callback Handlers */
