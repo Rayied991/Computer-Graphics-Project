@@ -180,7 +180,27 @@ void backGround()
 
 }
 
+//TrainLine
 
+void trainLine()
+{
+    glPushMatrix();
+    glTranslated(0,0.455, 0);
+    glPushMatrix();
+    glScaled(1,10,1);
+    glTranslated(0, 0.448, 0);
+    glColor3ub(128, 116, 120);
+    quad( -1,-.5,-1,-.488,1,-.488,1,-.5);
+    glPopMatrix();
+    glColor3ub(82, 55, 48);
+    quad( -1, -0.5, -1, 0.488, 1, -0.488, 1, -0.5);
+    glPushMatrix();
+    glTranslated(0, .06, 0);
+    quad( -1,-.488,-1,-.5,1,-.5,1,-.488);
+    glPopMatrix();
+
+    glPopMatrix();
+}
 
 void keyboardHandle(unsigned char key, int x, int y)
 {
@@ -231,9 +251,6 @@ void display()
     backGround();
     glPushMatrix();
         glTranslated(-.1,0,0);
-
-
-
 
 
     if(!night && !vrain)
