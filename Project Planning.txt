@@ -10,4 +10,5 @@ Day 2 :  1. Train
 
 Day 3 : 1. Building
 	  2. Sun and Moon
+	  3. Clouds
   
