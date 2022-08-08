@@ -128,6 +128,52 @@ void moon()
     glEnd();
 
 }
+
+void stars()
+{
+
+    glPointSize(3.7);
+    glBegin(GL_POINTS);
+    glVertex2f(.45f,.3f);
+    glVertex2f(.66f,.9f);
+    glVertex2f(.79f,.8f);
+    glVertex2f(.45f,.7f);
+    glVertex2f(.77f,.6f);
+    glVertex2f(.67f,.8f);
+    glVertex2f(.56f,.9f);
+    glVertex2f(.7f,.6f);
+
+    glVertex2f(-.4f,.8f);
+    glVertex2f(-.5f,.6f);
+    glVertex2f(-.3f,.5f);
+    glVertex2f(-.2f,.8f);
+    glVertex2f(-.4f,.8f);
+    glVertex2f(-.7f,.5f);
+    glVertex2f(-.6f,.7f);
+    glVertex2f(-.2f,.8f);
+
+    glVertex2f(-.1f,.9f);
+    glVertex2f(-.3f,.85f);
+    glVertex2f(-.72f,.92f);
+    glVertex2f(-.8f,.84f);
+
+    glVertex2f(-.9f,.84f);
+    glVertex2f(-.6f,.94f);
+    glVertex2f(-.9f,.2f);
+
+    glEnd();
+
+
+
+
+
+
+
+
+
+
+
+}
 void update(int value)
 {
 
@@ -202,7 +248,7 @@ void myDisplay2(void)
    glLoadIdentity();
    nightsky();
    moon();
-
+stars();
    glFlush();
 }
 void backGround()
@@ -283,6 +329,7 @@ void display()
         glLoadIdentity();
         nightsky();
         moon();
+        stars();
 
     }
     else
