@@ -82,7 +82,31 @@ void circle(GLfloat x, GLfloat y, GLfloat radius) // to draw circle
     }
     glEnd();
   }
+////sun
 
+
+//sun movement
+
+
+void sun()
+{
+    int i;
+
+    GLfloat x= 0.23f; GLfloat y=0.23f; GLfloat radius =0.4f;
+    int triangleAmount = 55;
+   glColor3ub(243, 249, 57);
+    GLfloat twicePi = 2.0f * PI;
+    glBegin(GL_TRIANGLE_FAN);
+        glVertex2f(x, y);
+        for(i = 0; i <= triangleAmount;i++) {
+            glVertex2f(
+                    x + (radius * cos(i *  twicePi / triangleAmount)),
+                y + (radius * sin(i * twicePi / triangleAmount))
+            );
+        }
+    glEnd();
+
+}
 void update(int value)
 {
 
@@ -147,7 +171,7 @@ glClearColor(0.53f,0.81f,0.92f,0.0f);
 	glLoadIdentity();
 	  daysky();
 
-
+sun();
 
    glFlush();
 }
@@ -244,7 +268,7 @@ void display()
         glClear(GL_COLOR_BUFFER_BIT);
         glLoadIdentity();
         daysky();
-
+sun();
 
 
     }
@@ -286,7 +310,7 @@ void display()
 }
 
 int main(int argc, char** argv) {
-   glutInit(&argc, argv);
+//   glutInit(&argc, argv);
 
 
 	cout<<"\n Press 'n' for Night mood.\n";
