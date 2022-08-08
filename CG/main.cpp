@@ -107,6 +107,27 @@ void sun()
     glEnd();
 
 }
+
+void moon()
+{
+    int i;
+    GLfloat x= 0.3f;
+    GLfloat y= 0.5f;
+    GLfloat radius= 0.17f;
+    int triangleAmount = 55;
+   glColor3ub(243, 241, 230 );
+    GLfloat twicePi = 2.0f * PI;
+    glBegin(GL_TRIANGLE_FAN);
+        glVertex2f(x, y);
+        for(i = 0; i <= triangleAmount;i++) {
+            glVertex2f(
+                    x + (radius * cos(i *  twicePi / triangleAmount)),
+                y + (radius * sin(i * twicePi / triangleAmount))
+            );
+        }
+    glEnd();
+
+}
 void update(int value)
 {
 
@@ -180,6 +201,7 @@ void myDisplay2(void)
    glClear(GL_COLOR_BUFFER_BIT);
    glLoadIdentity();
    nightsky();
+   moon();
 
    glFlush();
 }
@@ -260,6 +282,7 @@ void display()
         glClear(GL_COLOR_BUFFER_BIT);
         glLoadIdentity();
         nightsky();
+        moon();
 
     }
     else
