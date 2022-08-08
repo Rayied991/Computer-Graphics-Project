@@ -231,6 +231,7 @@ void nightsky()
 
 }
 
+
 void myDisplay1(void)
 {
 glClearColor(0.53f,0.81f,0.92f,0.0f);
@@ -347,6 +348,92 @@ void keyboardHandle(unsigned char key, int x, int y)
          break;
    }
 }
+/// bogy Mostafiz
+void bogy()
+{
+    glPushMatrix();
+
+    glBegin(GL_POLYGON);
+    glColor3b(128,15,46);
+    glVertex2f(.0f,.1f);
+    glVertex2f(.02f,.12f);
+    glVertex2f(.02f,.32f);
+    glVertex2f(-.38f,.32f);
+    glVertex2f(-.4f,.3f);
+    glVertex2f(0.0f,0.3f);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3ub(153,170,177);
+    glVertex2f(-.4f,.3f);
+    glVertex2f(-.4f,.1f);
+    glVertex2f(.0f,.1f);
+    glVertex2f(.0f,.3f);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    if(night)
+    {
+       glColor3ub(247, 240, 188);
+    }
+    else
+    {
+        glColor3ub(37,47,53);
+    }
+    glVertex2f(-.35f,.23f);
+    glVertex2f(-.35f,.18f);
+    glVertex2f(-.3f,.18f);
+    glVertex2f(-0.3f,.23f);
+    glEnd();
+
+    glPushMatrix();
+        glTranslated(.07,0,0);
+        glBegin(GL_QUADS);
+        glVertex2f(-.35f,.23f);
+        glVertex2f(-.35f,.18f);
+        glVertex2f(-.3f,.18f);
+        glVertex2f(-0.3f,.23f);
+        glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslated(.14,0,0);
+        glBegin(GL_QUADS);
+        glVertex2f(-.35f,.23f);
+        glVertex2f(-.35f,.18f);
+        glVertex2f(-.3f,.18f);
+        glVertex2f(-0.3f,.23f);
+        glEnd();
+    glPopMatrix();
+
+
+    glPushMatrix();
+        glTranslated(.21,0,0);
+        glBegin(GL_QUADS);
+        glVertex2f(-.35f,.23f);
+        glVertex2f(-.35f,.18f);
+        glVertex2f(-.3f,.18f);
+        glVertex2f(-0.3f,.23f);
+        glEnd();
+    glPopMatrix();
+
+
+    glPushMatrix();
+        glColor3ub(128,15,46);
+            glTranslated(0,-.1,0);
+            glScalef(.4f,.4f,0.0f);
+            circle(-.7,.5,.1);
+            glTranslated(0.4f,0.0f,0.0f);
+            circle(-.7,.5,.1);
+        glPopMatrix();
+    glPopMatrix();
+
+
+
+}
+
+
+
 
 
 
@@ -394,6 +481,7 @@ sun();
         glTranslated(.2,0,0);
 
     glPopMatrix();
+
 
 
 
