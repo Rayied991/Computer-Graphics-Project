@@ -272,6 +272,38 @@ void backGround()
 
 }
 
+//rain_ADDED
+
+void rain()
+{
+    float x = -1.0;
+    float temp = 0.9;
+    for (int j=0; j<20; j++)
+    {
+        float y = temp;
+        for (int l = 0; l< 30; l ++)
+        {
+            glPushMatrix();
+            glTranslated(rainPosX, rainPos, 0.0f);
+            glBegin(GL_LINES);
+            glColor3ub(222, 222, 222);
+            glVertex2f(x,y);
+            x+= 0.05;
+            y+= 0.1;
+            glVertex2f(x,y);
+            glEnd();
+            y=temp;
+            x=x+0.1;
+            glPopMatrix();
+        }
+        temp -= 0.2;
+        x= -1;
+    }
+    glEnd();
+}
+
+
+
 //TrainLine
 
 void trainLine()
