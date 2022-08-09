@@ -477,6 +477,11 @@ void myDisplay1(void)
     cloud1();
     cloud2();
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> main
     glFlush();
 
 }
