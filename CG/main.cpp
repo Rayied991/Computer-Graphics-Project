@@ -244,6 +244,33 @@ void update(int value)
     glutPostRedisplay();
     glutTimerFunc(100, update, 0);
 }
+void cloudAnimation1(int value){
+
+if(positionOfCloud1<-1.7f)
+    positionOfCloud1=0.6f;
+
+positionOfCloud1-=speedOfCloud1;
+glutPostRedisplay();
+glutTimerFunc(40,cloudAnimation1,0);
+
+
+
+}
+void cloudAnimation2(int value){
+
+    if(positionOfCloud2<-0.6f)
+        positionOfCloud2=1.6f;
+
+positionOfCloud2-=speedOfCloud2;
+glutPostRedisplay();
+glutTimerFunc(40,cloudAnimation2,0);
+}
+void cloud1(){
+
+}
+
+void cloud2(){
+}
 
 
 void daysky()
@@ -613,8 +640,10 @@ int main(int argc, char** argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(1800, 900);
     glutInitWindowPosition(50, 50);
-    glutCreateWindow("Carnival");
+    glutCreateWindow("Train");
     glutDisplayFunc(display);
+    glutTimerFunc(40,cloudAnimation1,0);
+    glutTimerFunc(40,cloudAnimation2,0);
 
     glutKeyboardFunc(keyboardHandle);
     glutTimerFunc(100, update, 0);
