@@ -208,14 +208,6 @@ void stand()
 
 
 
-
-
-
-
-
-
-
-
 void update(int value)
 {
 
@@ -269,6 +261,7 @@ void cloudAnimation2(int value)
 }
 void cloud1()
 {
+<<<<<<< HEAD
     glPushMatrix();
     glTranslatef(positionOfCloud1,0.05f,0.0f);
     int i;
@@ -352,11 +345,14 @@ void cloud1()
 
 
 
+=======
+>>>>>>> main
 
 }
 
 void cloud2()
 {
+<<<<<<< HEAD
     glPushMatrix();
     glTranslatef(positionOfCloud2,-0.02f,0.0f);
     int i;
@@ -437,6 +433,8 @@ void cloud2()
     glEnd();
     glPopMatrix();
 
+=======
+>>>>>>> main
 }
 
 
@@ -477,11 +475,16 @@ void myDisplay1(void)
     daysky();
     stand();
     sun();
+<<<<<<< HEAD
     cloud1();
     cloud2();
+=======
+
+>>>>>>> main
     glFlush();
 
 }
+
 void myDisplay2(void)
 {
 
@@ -553,7 +556,7 @@ void rain()
 void trainLine()
 {
     glPushMatrix();
-    glTranslated(0,0.455, 0);
+    glTranslated(0,-0.455, 0);
     glPushMatrix();
     glScaled(1,10,1);
     glTranslated(0, 0.448, 0);
@@ -575,6 +578,21 @@ void keyboardHandle(unsigned char key, int x, int y)
 
     switch (key)
     {
+    case 'm':
+        anglel_M+=speed_M;
+        speed_M+= 0.75;
+        update(0);
+        break;
+    case 'M':
+        speed_M=0.0;
+        break;
+    case 'b':
+        speed_N+=0.4;
+        update(0);
+        break;
+    case 'B':
+        speed_N=0.0;
+        break;
 
 
 
@@ -585,7 +603,13 @@ void keyboardHandle(unsigned char key, int x, int y)
         night=false;
         break;
 
+    case 'r':
+        vrain=true;
+        break;
 
+    case 'R':
+        vrain = false;
+        break;
 
     case 'e':
         exit(0);
@@ -760,23 +784,22 @@ void display()
     }
 
 
-
     glPushMatrix();
     glScaled(1.3,1.7,1);
     glTranslated(.2,0,0);
 
     glPopMatrix();
+    //train...
 
 
-
-
+    trainLine();
     glPushMatrix();
-
+    completeTrain();
     glPopMatrix();
     glPushMatrix();
     if(vrain)
     {
-
+        rain();
     }
     glPopMatrix();
 
@@ -786,15 +809,20 @@ void display()
 
 int main(int argc, char** argv)
 {
-//   glutInit(&argc, argv);
+    glutInit(&argc, argv);
 
 
     cout<<"\n Press 'n' for Night mood.\n";
     cout<<"\n Press 'Shift n' for Day mood.\n";
+    cout<<"\n Press 'r' for start the rain.\n";
+    cout<<"\n Press 'Shift r' for stop the rain.\n";
+    cout<<"\n Press 'w' for Train move forward.\n";
+    cout<<"\n Press 's' for Train move backward.\n";
 
     cout<<"\n Press 'e' for exit.\n";
+
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-    glutInitWindowSize(1800, 900);
+    glutInitWindowSize(1920, 900);
     glutInitWindowPosition(50, 50);
     glutCreateWindow("Train");
     glutDisplayFunc(display);
