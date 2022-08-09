@@ -430,7 +430,13 @@ void keyboardHandle(unsigned char key, int x, int y)
         night=false;
         break;
 
+    case 'r':
+        vrain=true;
+        break;
 
+    case 'R':
+        vrain = false;
+        break;
 
     case 'e':
         exit(0);
@@ -583,8 +589,6 @@ void display()
 
         stand();
 
-sun();
-
         sun();
 
 
@@ -604,15 +608,11 @@ sun();
     }
 
 
-
     glPushMatrix();
     glScaled(1.3,1.7,1);
     glTranslated(.2,0,0);
 
     glPopMatrix();
-
-
-
 
     glPushMatrix();
 
@@ -620,7 +620,7 @@ sun();
     glPushMatrix();
     if(vrain)
     {
-
+        rain();
     }
     glPopMatrix();
 
@@ -635,6 +635,9 @@ int main(int argc, char** argv)
 
     cout<<"\n Press 'n' for Night mood.\n";
     cout<<"\n Press 'Shift n' for Day mood.\n";
+    cout<<"\n Press 'r' for start the rain.\n";
+    cout<<"\n Press 'Shift r' for stop the rain.\n";
+
 
     cout<<"\n Press 'e' for exit.\n";
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
