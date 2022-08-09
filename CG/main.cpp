@@ -179,40 +179,32 @@ void stand()
     glScaled(1,1.5,0); //x,y,z axies
     glColor3ub(80, 156, 241);
 
-    quad(-.360, -.37, -.334, -.37,-.334, -.138 , -.360, -.138);
+    quad(-.360, -.37, -.334, -.37,-.334, -.138, -.360, -.138);
     glPopMatrix();
 //right
 
-        glPushMatrix();
-        glScaled(1,1.5,0);
-        glRotated(180,0,1,0);
-            glTranslated(.25,0,0);
-        glColor3ub(247, 144, 42);
+    glPushMatrix();
+    glScaled(1,1.5,0);
+    glRotated(180,0,1,0);
+    glTranslated(.25,0,0);
+    glColor3ub(247, 144, 42);
 
-            quad( -.360, -.37,-.334, -.37 ,-.334, -.138 ,-.360, -.138 );
+    quad( -.360, -.37,-.334, -.37,-.334, -.138,-.360, -.138 );
 
-        glPopMatrix();
+    glPopMatrix();
 
 //quads
-       quad( -.345, -.37,.1, -.37 ,.1, -.2 ,-.345, -.2 );
-            glColor3ub(0,0,0 );
-            quad( -.345, -.37, .1, -.37,.1, -.2 ,-.345, -.2 );
-glPushMatrix();
-glColor3ub(0,0,0);
-printText(-.25,-.3,travel);
-glPopMatrix();
+    quad( -.345, -.37,.1, -.37,.1, -.2,-.345, -.2 );
+    glColor3ub(0,0,0 );
+    quad( -.345, -.37, .1, -.37,.1, -.2,-.345, -.2 );
+    glPushMatrix();
+    glColor3ub(0,0,0);
+    printText(-.25,-.3,travel);
+    glPopMatrix();
 
 
 
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -244,32 +236,36 @@ void update(int value)
     glutPostRedisplay();
     glutTimerFunc(100, update, 0);
 }
-void cloudAnimation1(int value){
+void cloudAnimation1(int value)
+{
 
-if(positionOfCloud1<-1.7f)
-    positionOfCloud1=0.6f;
+    if(positionOfCloud1<-1.7f)
+        positionOfCloud1=0.6f;
 
-positionOfCloud1-=speedOfCloud1;
-glutPostRedisplay();
-glutTimerFunc(40,cloudAnimation1,0);
+    positionOfCloud1-=speedOfCloud1;
+    glutPostRedisplay();
+    glutTimerFunc(40,cloudAnimation1,0);
 
 
 
 }
-void cloudAnimation2(int value){
+void cloudAnimation2(int value)
+{
 
     if(positionOfCloud2<-0.6f)
         positionOfCloud2=1.6f;
 
-positionOfCloud2-=speedOfCloud2;
-glutPostRedisplay();
-glutTimerFunc(40,cloudAnimation2,0);
+    positionOfCloud2-=speedOfCloud2;
+    glutPostRedisplay();
+    glutTimerFunc(40,cloudAnimation2,0);
 }
-void cloud1(){
+void cloud1()
+{
 
 }
 
-void cloud2(){
+void cloud2()
+{
 }
 
 
@@ -304,40 +300,27 @@ void nightsky()
 void myDisplay1(void)
 {
 
-glClearColor(0.53f,0.81f,0.92f,0.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
-	glLoadIdentity();
-	  daysky();
-	  stand();
-	  sun();
-
     glClearColor(0.53f,0.81f,0.92f,0.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
     daysky();
-
+    stand();
     sun();
-
 
     glFlush();
 }
+
 void myDisplay2(void)
 {
-
-   glClear(GL_COLOR_BUFFER_BIT);
-   glLoadIdentity();
-   nightsky();
-   moon();
-   stand();
-   stars();
-   glFlush();
 
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
     nightsky();
     moon();
+    stand();
     stars();
     glFlush();
+
 
 }
 void backGround()
@@ -398,7 +381,7 @@ void rain()
 void trainLine()
 {
     glPushMatrix();
-    glTranslated(0,0.455, 0);
+    glTranslated(0,-0.455, 0);
     glPushMatrix();
     glScaled(1,10,1);
     glTranslated(0, 0.448, 0);
@@ -420,6 +403,21 @@ void keyboardHandle(unsigned char key, int x, int y)
 
     switch (key)
     {
+    case 'm':
+        anglel_M+=speed_M;
+        speed_M+= 0.75;
+        update(0);
+        break;
+    case 'M':
+        speed_M=0.0;
+        break;
+    case 'b':
+        speed_N+=0.4;
+        update(0);
+        break;
+    case 'B':
+        speed_N=0.0;
+        break;
 
 
 
@@ -613,9 +611,12 @@ void display()
     glTranslated(.2,0,0);
 
     glPopMatrix();
+    //train...
 
+
+    trainLine();
     glPushMatrix();
-
+    completeTrain();
     glPopMatrix();
     glPushMatrix();
     if(vrain)
@@ -630,18 +631,20 @@ void display()
 
 int main(int argc, char** argv)
 {
-//   glutInit(&argc, argv);
+    glutInit(&argc, argv);
 
 
     cout<<"\n Press 'n' for Night mood.\n";
     cout<<"\n Press 'Shift n' for Day mood.\n";
     cout<<"\n Press 'r' for start the rain.\n";
     cout<<"\n Press 'Shift r' for stop the rain.\n";
-
+    cout<<"\n Press 'w' for Train move forward.\n";
+    cout<<"\n Press 's' for Train move backward.\n";
 
     cout<<"\n Press 'e' for exit.\n";
+
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-    glutInitWindowSize(1800, 900);
+    glutInitWindowSize(1920, 900);
     glutInitWindowPosition(50, 50);
     glutCreateWindow("Train");
     glutDisplayFunc(display);
