@@ -11,6 +11,8 @@ using namespace std;
 bool night=false;
 bool vrain=false;
 
+char travel[] = "Welcome To Sajek";
+
 float anglel_M = 0.0f;
 float anglel_N = 0.0f;
 GLfloat speed_M= 0.0f;
@@ -166,18 +168,46 @@ void stars()
     glVertex2f(-.9f,.2f);
 
     glEnd();
+}
 
+void stand()
+{
 
+    //left stand
 
+    glPushMatrix();
+    glScaled(1,1.5,0); //x,y,z axies
+    glColor3ub(80, 156, 241);
 
+    quad(-.360, -.37, -.334, -.37,-.334, -.138, -.360, -.138);
+    glPopMatrix();
+//right
 
+    glPushMatrix();
+    glScaled(1,1.5,0);
+    glRotated(180,0,1,0);
+    glTranslated(.25,0,0);
+    glColor3ub(247, 144, 42);
 
+    quad( -.360, -.37,-.334, -.37,-.334, -.138,-.360, -.138 );
 
+    glPopMatrix();
 
+//quads
+    quad( -.345, -.37,.1, -.37,.1, -.2,-.345, -.2 );
+    glColor3ub(0,0,0 );
+    quad( -.345, -.37, .1, -.37,.1, -.2,-.345, -.2 );
+    glPushMatrix();
+    glColor3ub(0,0,0);
+    printText(-.25,-.3,travel);
+    glPopMatrix();
 
 
 
 }
+
+
+
 void update(int value)
 {
 
@@ -205,6 +235,206 @@ void update(int value)
 
     glutPostRedisplay();
     glutTimerFunc(100, update, 0);
+}
+void cloudAnimation1(int value)
+{
+
+    if(positionOfCloud1<-1.7f)
+        positionOfCloud1=0.6f;
+
+    positionOfCloud1-=speedOfCloud1;
+    glutPostRedisplay();
+    glutTimerFunc(40,cloudAnimation1,0);
+
+
+
+}
+void cloudAnimation2(int value)
+{
+
+    if(positionOfCloud2<-0.6f)
+        positionOfCloud2=1.6f;
+
+    positionOfCloud2-=speedOfCloud2;
+    glutPostRedisplay();
+    glutTimerFunc(40,cloudAnimation2,0);
+}
+void cloud1()
+{
+<<<<<<< HEAD
+    glPushMatrix();
+    glTranslatef(positionOfCloud1,0.05f,0.0f);
+    int i;
+
+    GLfloat x=.5f;
+    GLfloat y=0.90f;
+    GLfloat radius=0.05f;
+    int triangleAmount=20;
+    GLfloat twicePi=2.0f * PI;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glColor3ub(255,240,255);
+    glVertex2f(x,y);
+    for(i=0; i<=triangleAmount; i++)
+    {
+        glVertex2f(
+            x+(radius*cos(i*twicePi/triangleAmount)),
+            y+(radius*sin(i*twicePi/triangleAmount))
+        );
+    }
+
+    glEnd();
+
+    GLfloat a=.55f;
+    GLfloat b=.87f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(a, b); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            a + (radius * cos(i *  twicePi / triangleAmount)),
+            b + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+
+    glEnd();
+
+    GLfloat c=.45f;
+    GLfloat d=.87f;
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(c, d); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            c + (radius * cos(i *  twicePi / triangleAmount)),
+            d + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+
+    GLfloat e=.52f;
+    GLfloat f=.84f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(e, f); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            e + (radius * cos(i *  twicePi / triangleAmount)),
+            f + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+
+    GLfloat g=.6f;
+    GLfloat h=.86f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(g, h); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            e + (radius * cos(i *  twicePi / triangleAmount)),
+            f + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+    glPopMatrix();
+
+
+
+
+=======
+>>>>>>> main
+
+}
+
+void cloud2()
+{
+<<<<<<< HEAD
+    glPushMatrix();
+    glTranslatef(positionOfCloud2,-0.02f,0.0f);
+    int i;
+
+    GLfloat x=-.5f;
+    GLfloat y=0.84f;
+    GLfloat radius=0.05f;
+    int triangleAmount=20;
+    GLfloat twicePi=2.0f * PI;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glColor3ub(255,240,255);
+    glVertex2f(x,y);
+    for(i=0; i<=triangleAmount; i++)
+    {
+        glVertex2f(
+            x+(radius*cos(i*twicePi/triangleAmount)),
+            y+(radius*sin(i*twicePi/triangleAmount))
+        );
+    }
+
+    glEnd();
+
+    GLfloat a=-.55f;
+    GLfloat b=.81f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(a, b); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            a + (radius * cos(i *  twicePi / triangleAmount)),
+            b + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+
+    glEnd();
+
+    GLfloat c=-.45f;
+    GLfloat d=.81f;
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(c, d); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            c + (radius * cos(i *  twicePi / triangleAmount)),
+            d + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+
+    GLfloat e=-.52f;
+    GLfloat f=.78f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(e, f); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            e + (radius * cos(i *  twicePi / triangleAmount)),
+            f + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+
+    GLfloat g=-.6f;
+    GLfloat h=.80f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(g, h); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            e + (radius * cos(i *  twicePi / triangleAmount)),
+            f + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+    glPopMatrix();
+
+=======
+>>>>>>> main
 }
 
 
@@ -238,23 +468,35 @@ void nightsky()
 
 void myDisplay1(void)
 {
+
     glClearColor(0.53f,0.81f,0.92f,0.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
     daysky();
-
+    stand();
     sun();
+<<<<<<< HEAD
+    cloud1();
+    cloud2();
+=======
 
+>>>>>>> main
     glFlush();
+
 }
+
 void myDisplay2(void)
 {
+
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
     nightsky();
     moon();
+    stand();
     stars();
     glFlush();
+
+
 }
 void backGround()
 {
@@ -314,7 +556,7 @@ void rain()
 void trainLine()
 {
     glPushMatrix();
-    glTranslated(0,0.455, 0);
+    glTranslated(0,-0.455, 0);
     glPushMatrix();
     glScaled(1,10,1);
     glTranslated(0, 0.448, 0);
@@ -336,6 +578,21 @@ void keyboardHandle(unsigned char key, int x, int y)
 
     switch (key)
     {
+    case 'm':
+        anglel_M+=speed_M;
+        speed_M+= 0.75;
+        update(0);
+        break;
+    case 'M':
+        speed_M=0.0;
+        break;
+    case 'b':
+        speed_N+=0.4;
+        update(0);
+        break;
+    case 'B':
+        speed_N=0.0;
+        break;
 
 
 
@@ -346,7 +603,13 @@ void keyboardHandle(unsigned char key, int x, int y)
         night=false;
         break;
 
+    case 'r':
+        vrain=true;
+        break;
 
+    case 'R':
+        vrain = false;
+        break;
 
     case 'e':
         exit(0);
@@ -534,7 +797,14 @@ void display()
         glClear(GL_COLOR_BUFFER_BIT);
         glLoadIdentity();
         daysky();
+
+        stand();
+
         sun();
+        cloud1();
+        cloud2();
+
+
 
 
     }
@@ -552,23 +822,22 @@ void display()
     }
 
 
-
     glPushMatrix();
     glScaled(1.3,1.7,1);
     glTranslated(.2,0,0);
 
     glPopMatrix();
+    //train...
 
 
-
-
+    trainLine();
     glPushMatrix();
-
+    completeTrain();
     glPopMatrix();
     glPushMatrix();
     if(vrain)
     {
-
+        rain();
     }
     glPopMatrix();
 
@@ -578,18 +847,25 @@ void display()
 
 int main(int argc, char** argv)
 {
-//   glutInit(&argc, argv);
+    glutInit(&argc, argv);
 
 
     cout<<"\n Press 'n' for Night mood.\n";
     cout<<"\n Press 'Shift n' for Day mood.\n";
+    cout<<"\n Press 'r' for start the rain.\n";
+    cout<<"\n Press 'Shift r' for stop the rain.\n";
+    cout<<"\n Press 'w' for Train move forward.\n";
+    cout<<"\n Press 's' for Train move backward.\n";
 
     cout<<"\n Press 'e' for exit.\n";
+
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-    glutInitWindowSize(1800, 900);
+    glutInitWindowSize(1920, 900);
     glutInitWindowPosition(50, 50);
-    glutCreateWindow("Carnival");
+    glutCreateWindow("Train");
     glutDisplayFunc(display);
+    glutTimerFunc(40,cloudAnimation1,0);
+    glutTimerFunc(40,cloudAnimation2,0);
 
     glutKeyboardFunc(keyboardHandle);
     glutTimerFunc(100, update, 0);
