@@ -261,7 +261,7 @@ void cloudAnimation2(int value)
 }
 void cloud1()
 {
-<<<<<<< HEAD
+
     glPushMatrix();
     glTranslatef(positionOfCloud1,0.05f,0.0f);
     int i;
@@ -345,14 +345,13 @@ void cloud1()
 
 
 
-=======
->>>>>>> main
+
 
 }
 
 void cloud2()
 {
-<<<<<<< HEAD
+
     glPushMatrix();
     glTranslatef(positionOfCloud2,-0.02f,0.0f);
     int i;
@@ -433,8 +432,7 @@ void cloud2()
     glEnd();
     glPopMatrix();
 
-=======
->>>>>>> main
+
 }
 
 
@@ -475,12 +473,10 @@ void myDisplay1(void)
     daysky();
     stand();
     sun();
-<<<<<<< HEAD
+
     cloud1();
     cloud2();
-=======
 
->>>>>>> main
     glFlush();
 
 }
@@ -556,65 +552,75 @@ void rain()
 void trainLine()
 {
     glPushMatrix();
-    glTranslated(0,-0.455, 0);
+    glTranslated(0,-.455,0);
     glPushMatrix();
     glScaled(1,10,1);
-    glTranslated(0, 0.448, 0);
-    glColor3ub(128, 116, 120);
+    glTranslated(0,.448,0);
+    glColor3ub(128,116,120);
     quad( -1,-.5,-1,-.488,1,-.488,1,-.5);
     glPopMatrix();
-    glColor3ub(82, 55, 48);
-    quad( -1, -0.5, -1, 0.488, 1, -0.488, 1, -0.5);
+    glColor3ub(82,55,48);
+    quad( -1,-.5,-1,-.488,1,-.488,1,-.5);
     glPushMatrix();
-    glTranslated(0, .06, 0);
+    glTranslated(0,.06,0);
     quad( -1,-.488,-1,-.5,1,-.5,1,-.488);
     glPopMatrix();
 
+
+
     glPopMatrix();
+
 }
 
 void keyboardHandle(unsigned char key, int x, int y)
 {
 
-    switch (key)
-    {
-    case 'm':
-        anglel_M+=speed_M;
-        speed_M+= 0.75;
+   switch (key) {
+      case 'm':
+        anglel_M += speed_M;
+        speed_M+=0.75;
         update(0);
         break;
-    case 'M':
+      case 'M':
         speed_M=0.0;
         break;
-    case 'b':
+      case 'b':
         speed_N+=0.4;
         update(0);
         break;
-    case 'B':
-        speed_N=0.0;
-        break;
+      case 'B':
+          speed_N = 0.0;
+          break;
+
+        case 'w':
+          trainPos-=trainSpeed;
+          update(0);
+          break;
+        case 's':
+          trainPos+=trainSpeed;
+          update(0);
+          break;
 
 
+        case 'n':
+            night=true;
+            break;
+        case 'N':
+            night=false;
+            break;
+        case 'r':
+            vrain=true;
 
-    case 'n':
-        night=true;
-        break;
-    case 'N':
-        night=false;
-        break;
+            break;
+        case 'R':
+            vrain=false;
+            break;
 
-    case 'r':
-        vrain=true;
-        break;
 
-    case 'R':
-        vrain = false;
-        break;
-
-    case 'e':
-        exit(0);
-        break;
-    }
+        case 'e':
+         exit(0);
+         break;
+   }
 }
 /// bogy Mostafiz
 void bogy()
@@ -787,9 +793,8 @@ void display()
         glClear(GL_COLOR_BUFFER_BIT);
         glLoadIdentity();
         nightsky();
-        moon();
         stars();
-
+        moon();
     }
     else
     {
@@ -797,15 +802,10 @@ void display()
         glClear(GL_COLOR_BUFFER_BIT);
         glLoadIdentity();
         daysky();
-
-        stand();
-
         sun();
         cloud1();
+
         cloud2();
-
-
-
 
     }
     backGround();
@@ -813,13 +813,81 @@ void display()
     glTranslated(-.1,0,0);
 
 
+    glPushMatrix();
+    glScaled(0.33,1,1);
+    glTranslated(.149,-.15,0);
+
+    glPopMatrix();
+
+    glPushMatrix();
+    glScaled(0.33,1,1);
+    glTranslated(1.13,-.15,0);
+
+    glPopMatrix();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(.9,0,0);
+
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(-.015,0,0);
+
+    glPopMatrix();
+
+
+    glPushMatrix();
+
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(0,-.15,0);
+
+    glPopMatrix();
+    glPushMatrix();
+    glTranslated(.3,-.15,0);
+
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-0.68,0.48,0);
+
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(.38,-.58,0);
+
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(.15,-.58,0);
+
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-.6,-.6,0);
+
+    glPopMatrix();
+
     if(!night && !vrain)
     {
 
+        glPushMatrix();
+        glTranslated(.15,0,0);
+        glScaled(.8,.8,1);
+
+
+        glPushMatrix();
+        glRotated(180,0,1,0);
+        glTranslated(-1.6,0.005,0);
 
         glPopMatrix();
         glPopMatrix();
     }
+
 
 
     glPushMatrix();
@@ -827,7 +895,6 @@ void display()
     glTranslated(.2,0,0);
 
     glPopMatrix();
-    //train...
 
 
     trainLine();

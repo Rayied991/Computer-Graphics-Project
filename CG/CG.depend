@@ -8,7 +8,7 @@
 	<windows.h>
 	<mmsystem.h>
 
-1659979624 source:c:\users\hp\onedrive\desktop\git\computer-graphics-project\cg\main.cpp
+1660056951 source:c:\users\hp\onedrive\desktop\git\computer-graphics-project\cg\main.cpp
 	<iostream>
 	<GL/gl.h>
 	<GL/glut.h>
