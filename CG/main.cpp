@@ -618,9 +618,8 @@ void keyboardHandle(unsigned char key, int x, int y)
 void bogy()
 {
     glPushMatrix();
-
     glBegin(GL_POLYGON);
-    glColor3b(128,15,46);
+    glColor3ub(128,15,46);
     glVertex2f(.0f,.1f);
     glVertex2f(.02f,.12f);
     glVertex2f(.02f,.32f);
@@ -637,6 +636,7 @@ void bogy()
     glVertex2f(.0f,.3f);
     glEnd();
 
+
     glBegin(GL_QUADS);
     if(night)
     {
@@ -652,9 +652,11 @@ void bogy()
     glVertex2f(-0.3f,.23f);
     glEnd();
 
+
     glPushMatrix();
     glTranslated(.07,0,0);
     glBegin(GL_QUADS);
+
     glVertex2f(-.35f,.23f);
     glVertex2f(-.35f,.18f);
     glVertex2f(-.3f,.18f);
@@ -665,24 +667,24 @@ void bogy()
     glPushMatrix();
     glTranslated(.14,0,0);
     glBegin(GL_QUADS);
+
     glVertex2f(-.35f,.23f);
     glVertex2f(-.35f,.18f);
     glVertex2f(-.3f,.18f);
     glVertex2f(-0.3f,.23f);
     glEnd();
     glPopMatrix();
-
 
     glPushMatrix();
     glTranslated(.21,0,0);
     glBegin(GL_QUADS);
+
     glVertex2f(-.35f,.23f);
     glVertex2f(-.35f,.18f);
     glVertex2f(-.3f,.18f);
     glVertex2f(-0.3f,.23f);
     glEnd();
     glPopMatrix();
-
 
     glPushMatrix();
     glColor3ub(128,15,46);
@@ -703,7 +705,6 @@ void bogy()
 void completeTrain()
 {
     glPushMatrix();
-
     glTranslated(trainPos,-1,0);
     bogy();
 
@@ -717,6 +718,11 @@ void completeTrain()
     bogy();
     glPopMatrix();
 
+    glPushMatrix();
+    glTranslated(-.45,0,0);
+    bogy();
+
+    glPushMatrix();
     glTranslated(0,.14,0);
     glBegin(GL_QUADS);
     glColor3ub(37,47,53);
@@ -726,12 +732,44 @@ void completeTrain()
     glVertex2f(-0.3f,.25f);
     glEnd();
     glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(.35,-.05,0);
+    glBegin(GL_QUADS);
+    glColor3ub(0,0,0);
+    glVertex2f(-.35f,.23f);
+    glVertex2f(-.35f,.18f);
+    glVertex2f(-.3f,.18f);
+    glVertex2f(-0.3f,.23f);
+    glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(.8,-.05,0);
+    glBegin(GL_QUADS);
+    glColor3ub(0,0,0);
+    glVertex2f(-.35f,.23f);
+    glVertex2f(-.35f,.18f);
+    glVertex2f(-.3f,.18f);
+    glVertex2f(-0.3f,.23f);
+    glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(1.25,-.05,0);
+    glBegin(GL_QUADS);
+    glColor3ub(0,0,0);
+    glVertex2f(-.35f,.23f);
+    glVertex2f(-.35f,.18f);
+    glVertex2f(-.3f,.18f);
+    glVertex2f(-0.3f,.23f);
+    glEnd();
+    glPopMatrix();
+
+    glPopMatrix();
     glPopMatrix();
 
 
-
-
-    glPopMatrix();
 
 }
 
