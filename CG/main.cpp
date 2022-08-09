@@ -11,6 +11,8 @@ using namespace std;
 bool night=false;
 bool vrain=false;
 
+char travel[] = "Welcome To Sajek";
+
 float anglel_M = 0.0f;
 float anglel_N = 0.0f;
 GLfloat speed_M= 0.0f;
@@ -166,18 +168,54 @@ void stars()
     glVertex2f(-.9f,.2f);
 
     glEnd();
+}
 
+void stand()
+{
 
+    //left stand
 
+    glPushMatrix();
+    glScaled(1,1.5,0); //x,y,z axies
+    glColor3ub(80, 156, 241);
 
+    quad(-.360, -.37, -.334, -.37,-.334, -.138 , -.360, -.138);
+    glPopMatrix();
+//right
 
+        glPushMatrix();
+        glScaled(1,1.5,0);
+        glRotated(180,0,1,0);
+            glTranslated(.25,0,0);
+        glColor3ub(247, 144, 42);
 
+            quad( -.360, -.37,-.334, -.37 ,-.334, -.138 ,-.360, -.138 );
 
+        glPopMatrix();
 
+//quads
+       quad( -.345, -.37,.1, -.37 ,.1, -.2 ,-.345, -.2 );
+            glColor3ub(0,0,0 );
+            quad( -.345, -.37, .1, -.37,.1, -.2 ,-.345, -.2 );
+glPushMatrix();
+glColor3ub(0,0,0);
+printText(-.25,-.3,travel);
+glPopMatrix();
 
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
 void update(int value)
 {
 
@@ -238,6 +276,14 @@ void nightsky()
 
 void myDisplay1(void)
 {
+
+glClearColor(0.53f,0.81f,0.92f,0.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
+	glLoadIdentity();
+	  daysky();
+	  stand();
+	  sun();
+
     glClearColor(0.53f,0.81f,0.92f,0.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
@@ -245,16 +291,27 @@ void myDisplay1(void)
 
     sun();
 
+
     glFlush();
 }
 void myDisplay2(void)
 {
+
+   glClear(GL_COLOR_BUFFER_BIT);
+   glLoadIdentity();
+   nightsky();
+   moon();
+   stand();
+   stars();
+   glFlush();
+
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
     nightsky();
     moon();
     stars();
     glFlush();
+
 }
 void backGround()
 {
@@ -496,7 +553,13 @@ void display()
         glClear(GL_COLOR_BUFFER_BIT);
         glLoadIdentity();
         daysky();
+
+        stand();
+
+sun();
+
         sun();
+
 
 
     }
