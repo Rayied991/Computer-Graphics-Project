@@ -11,6 +11,8 @@ using namespace std;
 bool night=false;
 bool vrain=false;
 
+char travel[] = "Welcome To Sajek";
+
 float anglel_M = 0.0f;
 float anglel_N = 0.0f;
 GLfloat speed_M= 0.0f;
@@ -66,38 +68,169 @@ void printText( float x, float y, char *st) // to print string
     glRasterPos2f( x, y);
     for( i=0; i < l; i++)
     {
-       glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, st[i]);
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, st[i]);
     }
 }
 
 void circle(GLfloat x, GLfloat y, GLfloat radius) // to draw circle
-  {
+{
     int i;
     float angle;
     glBegin(GL_POLYGON);
-    for(i=0;i<100;i++)
-	{
+    for(i=0; i<100; i++)
+    {
         angle = i*2*(M_PI/100);
         glVertex2f(x+(sin(angle)*radius),y+(cos(angle)*radius));
     }
     glEnd();
-  }
+}
+////sun
+
+
+//sun movement
+
+
+void sun()
+{
+    int i;
+
+    GLfloat x= 0.23f;
+    GLfloat y=0.23f;
+    GLfloat radius =0.4f;
+    int triangleAmount = 55;
+    glColor3ub(243, 249, 57);
+    GLfloat twicePi = 2.0f * PI;
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(x, y);
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            x + (radius * cos(i *  twicePi / triangleAmount)),
+            y + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+
+}
+
+void moon()
+{
+    int i;
+    GLfloat x= 0.3f;
+    GLfloat y= 0.5f;
+    GLfloat radius= 0.17f;
+    int triangleAmount = 55;
+    glColor3ub(243, 241, 230 );
+    GLfloat twicePi = 2.0f * PI;
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(x, y);
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            x + (radius * cos(i *  twicePi / triangleAmount)),
+            y + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+
+}
+
+void stars()
+{
+
+    glPointSize(3.7);
+    glBegin(GL_POINTS);
+    glVertex2f(.45f,.3f);
+    glVertex2f(.66f,.9f);
+    glVertex2f(.79f,.8f);
+    glVertex2f(.45f,.7f);
+    glVertex2f(.77f,.6f);
+    glVertex2f(.67f,.8f);
+    glVertex2f(.56f,.9f);
+    glVertex2f(.7f,.6f);
+
+    glVertex2f(-.4f,.8f);
+    glVertex2f(-.5f,.6f);
+    glVertex2f(-.3f,.5f);
+    glVertex2f(-.2f,.8f);
+    glVertex2f(-.4f,.8f);
+    glVertex2f(-.7f,.5f);
+    glVertex2f(-.6f,.7f);
+    glVertex2f(-.2f,.8f);
+
+    glVertex2f(-.1f,.9f);
+    glVertex2f(-.3f,.85f);
+    glVertex2f(-.72f,.92f);
+    glVertex2f(-.8f,.84f);
+
+    glVertex2f(-.9f,.84f);
+    glVertex2f(-.6f,.94f);
+    glVertex2f(-.9f,.2f);
+
+    glEnd();
+}
+
+void stand()
+{
+
+    //left stand
+
+    glPushMatrix();
+    glScaled(1,1.5,0); //x,y,z axies
+    glColor3ub(80, 156, 241);
+
+    quad(-.360, -.37, -.334, -.37,-.334, -.138 , -.360, -.138);
+    glPopMatrix();
+//right
+
+        glPushMatrix();
+        glScaled(1,1.5,0);
+        glRotated(180,0,1,0);
+            glTranslated(.25,0,0);
+        glColor3ub(247, 144, 42);
+
+            quad( -.360, -.37,-.334, -.37 ,-.334, -.138 ,-.360, -.138 );
+
+        glPopMatrix();
+
+//quads
+       quad( -.345, -.37,.1, -.37 ,.1, -.2 ,-.345, -.2 );
+            glColor3ub(0,0,0 );
+            quad( -.345, -.37, .1, -.37,.1, -.2 ,-.345, -.2 );
+glPushMatrix();
+glColor3ub(0,0,0);
+printText(-.25,-.3,travel);
+glPopMatrix();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
 
 void update(int value)
 {
 
-     if(trainPos<-2)
-     {
+    if(trainPos<-2)
+    {
         trainPos=1.8;
-     }
-     else if(trainPos>1.8)
-     {
-       trainPos=-1.8;
-     }
-     if(rainPos<-.001)
-     {
+    }
+    else if(trainPos>1.8)
+    {
+        trainPos=-1.8;
+    }
+    if(rainPos<-.001)
+    {
         rainPos=.5;
-     }
+    }
     if(rainPosX<-0.1)
     {
         rainPosX=.05;
@@ -108,8 +241,8 @@ void update(int value)
         rainPosX-=rainSpeedX;
     }
 
-	glutPostRedisplay();
-	glutTimerFunc(100, update, 0);
+    glutPostRedisplay();
+    glutTimerFunc(100, update, 0);
 }
 void cloudAnimation1(int value){
 
@@ -167,31 +300,52 @@ void nightsky()
 
 }
 
+
 void myDisplay1(void)
 {
+
 glClearColor(0.53f,0.81f,0.92f,0.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glLoadIdentity();
 	  daysky();
+	  stand();
+	  sun();
+
+    glClearColor(0.53f,0.81f,0.92f,0.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glLoadIdentity();
+    daysky();
+
+    sun();
 
 
-
-   glFlush();
+    glFlush();
 }
 void myDisplay2(void)
 {
+
    glClear(GL_COLOR_BUFFER_BIT);
    glLoadIdentity();
    nightsky();
-
+   moon();
+   stand();
+   stars();
    glFlush();
+
+    glClear(GL_COLOR_BUFFER_BIT);
+    glLoadIdentity();
+    nightsky();
+    moon();
+    stars();
+    glFlush();
+
 }
 void backGround()
 {
 
 
     glColor3ub(4,88,50);
-    triangle( .2,-.1,1,-.1 ,.6,.35 );
+    triangle( .2,-.1,1,-.1,.6,.35 );
 
 
     glColor3ub(83, 112, 46);
@@ -206,6 +360,38 @@ void backGround()
     glEnd();
 
 }
+
+//rain_ADDED
+
+void rain()
+{
+    float x = -1.0;
+    float temp = 0.9;
+    for (int j=0; j<20; j++)
+    {
+        float y = temp;
+        for (int l = 0; l< 30; l ++)
+        {
+            glPushMatrix();
+            glTranslated(rainPosX, rainPos, 0.0f);
+            glBegin(GL_LINES);
+            glColor3ub(222, 222, 222);
+            glVertex2f(x,y);
+            x+= 0.05;
+            y+= 0.1;
+            glVertex2f(x,y);
+            glEnd();
+            y=temp;
+            x=x+0.1;
+            glPopMatrix();
+        }
+        temp -= 0.2;
+        x= -1;
+    }
+    glEnd();
+}
+
+
 
 //TrainLine
 
@@ -232,23 +418,144 @@ void trainLine()
 void keyboardHandle(unsigned char key, int x, int y)
 {
 
-   switch (key) {
+    switch (key)
+    {
 
 
 
-        case 'n':
-            night=true;
-            break;
-        case 'N':
-            night=false;
-            break;
+    case 'n':
+        night=true;
+        break;
+    case 'N':
+        night=false;
+        break;
 
 
 
-        case 'e':
-         exit(0);
-         break;
-   }
+    case 'e':
+        exit(0);
+        break;
+    }
+}
+/// bogy Mostafiz
+void bogy()
+{
+    glPushMatrix();
+
+    glBegin(GL_POLYGON);
+    glColor3b(128,15,46);
+    glVertex2f(.0f,.1f);
+    glVertex2f(.02f,.12f);
+    glVertex2f(.02f,.32f);
+    glVertex2f(-.38f,.32f);
+    glVertex2f(-.4f,.3f);
+    glVertex2f(0.0f,0.3f);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3ub(153,170,177);
+    glVertex2f(-.4f,.3f);
+    glVertex2f(-.4f,.1f);
+    glVertex2f(.0f,.1f);
+    glVertex2f(.0f,.3f);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    if(night)
+    {
+        glColor3ub(247, 240, 188);
+    }
+    else
+    {
+        glColor3ub(37,47,53);
+    }
+    glVertex2f(-.35f,.23f);
+    glVertex2f(-.35f,.18f);
+    glVertex2f(-.3f,.18f);
+    glVertex2f(-0.3f,.23f);
+    glEnd();
+
+    glPushMatrix();
+    glTranslated(.07,0,0);
+    glBegin(GL_QUADS);
+    glVertex2f(-.35f,.23f);
+    glVertex2f(-.35f,.18f);
+    glVertex2f(-.3f,.18f);
+    glVertex2f(-0.3f,.23f);
+    glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(.14,0,0);
+    glBegin(GL_QUADS);
+    glVertex2f(-.35f,.23f);
+    glVertex2f(-.35f,.18f);
+    glVertex2f(-.3f,.18f);
+    glVertex2f(-0.3f,.23f);
+    glEnd();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslated(.21,0,0);
+    glBegin(GL_QUADS);
+    glVertex2f(-.35f,.23f);
+    glVertex2f(-.35f,.18f);
+    glVertex2f(-.3f,.18f);
+    glVertex2f(-0.3f,.23f);
+    glEnd();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glColor3ub(128,15,46);
+    glTranslated(0,-.1,0);
+    glScalef(.4f,.4f,0.0f);
+    circle(-.7,.5,.1);
+    glTranslated(0.4f,0.0f,0.0f);
+    circle(-.7,.5,.1);
+    glPopMatrix();
+    glPopMatrix();
+
+
+
+}
+
+
+/// completeTrain
+void completeTrain()
+{
+    glPushMatrix();
+
+    glTranslated(trainPos,-1,0);
+    bogy();
+
+    glPushMatrix();
+    glTranslated(.45,0,0);
+    bogy();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(.9,0,0);
+    bogy();
+    glPopMatrix();
+
+    glTranslated(0,.14,0);
+    glBegin(GL_QUADS);
+    glColor3ub(37,47,53);
+    glVertex2f(-.35f,.25f);
+    glVertex2f(-.35f,.18f);
+    glVertex2f(-.3f,.18f);
+    glVertex2f(-0.3f,.25f);
+    glEnd();
+    glPopMatrix();
+    glPopMatrix();
+
+
+
+
+    glPopMatrix();
+
 }
 
 
@@ -256,13 +563,15 @@ void keyboardHandle(unsigned char key, int x, int y)
 
 void display()
 {
-   glClear(GL_COLOR_BUFFER_BIT);
-   glLoadIdentity();
+    glClear(GL_COLOR_BUFFER_BIT);
+    glLoadIdentity();
     if(night)
     {
         glClear(GL_COLOR_BUFFER_BIT);
         glLoadIdentity();
         nightsky();
+        moon();
+        stars();
 
     }
     else
@@ -272,12 +581,18 @@ void display()
         glLoadIdentity();
         daysky();
 
+        stand();
+
+sun();
+
+        sun();
+
 
 
     }
     backGround();
     glPushMatrix();
-        glTranslated(-.1,0,0);
+    glTranslated(-.1,0,0);
 
 
     if(!night && !vrain)
@@ -285,16 +600,17 @@ void display()
 
 
         glPopMatrix();
-    glPopMatrix();
+        glPopMatrix();
     }
 
 
 
     glPushMatrix();
-        glScaled(1.3,1.7,1);
-        glTranslated(.2,0,0);
+    glScaled(1.3,1.7,1);
+    glTranslated(.2,0,0);
 
     glPopMatrix();
+
 
 
 
@@ -302,25 +618,26 @@ void display()
 
     glPopMatrix();
     glPushMatrix();
-        if(vrain)
-        {
+    if(vrain)
+    {
 
-        }
+    }
     glPopMatrix();
 
-   glutSwapBuffers();
-   glFlush();
+    glutSwapBuffers();
+    glFlush();
 }
 
-int main(int argc, char** argv) {
-   glutInit(&argc, argv);
+int main(int argc, char** argv)
+{
+//   glutInit(&argc, argv);
 
 
-	cout<<"\n Press 'n' for Night mood.\n";
-	cout<<"\n Press 'Shift n' for Day mood.\n";
+    cout<<"\n Press 'n' for Night mood.\n";
+    cout<<"\n Press 'Shift n' for Day mood.\n";
 
-	cout<<"\n Press 'e' for exit.\n";
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    cout<<"\n Press 'e' for exit.\n";
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(1800, 900);
     glutInitWindowPosition(50, 50);
     glutCreateWindow("Train");
@@ -331,5 +648,5 @@ int main(int argc, char** argv) {
     glutKeyboardFunc(keyboardHandle);
     glutTimerFunc(100, update, 0);
     glutMainLoop();
-   return 0;
+    return 0;
 }
