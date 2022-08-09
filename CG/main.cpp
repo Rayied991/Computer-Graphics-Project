@@ -179,28 +179,28 @@ void stand()
     glScaled(1,1.5,0); //x,y,z axies
     glColor3ub(80, 156, 241);
 
-    quad(-.360, -.37, -.334, -.37,-.334, -.138 , -.360, -.138);
+    quad(-.360, -.37, -.334, -.37,-.334, -.138, -.360, -.138);
     glPopMatrix();
 //right
 
-        glPushMatrix();
-        glScaled(1,1.5,0);
-        glRotated(180,0,1,0);
-            glTranslated(.25,0,0);
-        glColor3ub(247, 144, 42);
+    glPushMatrix();
+    glScaled(1,1.5,0);
+    glRotated(180,0,1,0);
+    glTranslated(.25,0,0);
+    glColor3ub(247, 144, 42);
 
-            quad( -.360, -.37,-.334, -.37 ,-.334, -.138 ,-.360, -.138 );
+    quad( -.360, -.37,-.334, -.37,-.334, -.138,-.360, -.138 );
 
-        glPopMatrix();
+    glPopMatrix();
 
 //quads
-       quad( -.345, -.37,.1, -.37 ,.1, -.2 ,-.345, -.2 );
-            glColor3ub(0,0,0 );
-            quad( -.345, -.37, .1, -.37,.1, -.2 ,-.345, -.2 );
-glPushMatrix();
-glColor3ub(0,0,0);
-printText(-.25,-.3,travel);
-glPopMatrix();
+    quad( -.345, -.37,.1, -.37,.1, -.2,-.345, -.2 );
+    glColor3ub(0,0,0 );
+    quad( -.345, -.37, .1, -.37,.1, -.2,-.345, -.2 );
+    glPushMatrix();
+    glColor3ub(0,0,0);
+    printText(-.25,-.3,travel);
+    glPopMatrix();
 
 
 
@@ -244,32 +244,199 @@ void update(int value)
     glutPostRedisplay();
     glutTimerFunc(100, update, 0);
 }
-void cloudAnimation1(int value){
+void cloudAnimation1(int value)
+{
 
-if(positionOfCloud1<-1.7f)
-    positionOfCloud1=0.6f;
+    if(positionOfCloud1<-1.7f)
+        positionOfCloud1=0.6f;
 
-positionOfCloud1-=speedOfCloud1;
-glutPostRedisplay();
-glutTimerFunc(40,cloudAnimation1,0);
+    positionOfCloud1-=speedOfCloud1;
+    glutPostRedisplay();
+    glutTimerFunc(40,cloudAnimation1,0);
 
 
 
 }
-void cloudAnimation2(int value){
+void cloudAnimation2(int value)
+{
 
     if(positionOfCloud2<-0.6f)
         positionOfCloud2=1.6f;
 
-positionOfCloud2-=speedOfCloud2;
-glutPostRedisplay();
-glutTimerFunc(40,cloudAnimation2,0);
+    positionOfCloud2-=speedOfCloud2;
+    glutPostRedisplay();
+    glutTimerFunc(40,cloudAnimation2,0);
 }
-void cloud1(){
+void cloud1()
+{
+    glPushMatrix();
+    glTranslatef(positionOfCloud1,0.05f,0.0f);
+    int i;
+
+    GLfloat x=.5f;
+    GLfloat y=0.90f;
+    GLfloat radius=0.05f;
+    int triangleAmount=20;
+    GLfloat twicePi=2.0f * PI;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glColor3ub(255,240,255);
+    glVertex2f(x,y);
+    for(i=0; i<=triangleAmount; i++)
+    {
+        glVertex2f(
+            x+(radius*cos(i*twicePi/triangleAmount)),
+            y+(radius*sin(i*twicePi/triangleAmount))
+        );
+    }
+
+    glEnd();
+
+    GLfloat a=.55f;
+    GLfloat b=.87f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(a, b); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            a + (radius * cos(i *  twicePi / triangleAmount)),
+            b + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+
+    glEnd();
+
+    GLfloat c=.45f;
+    GLfloat d=.87f;
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(c, d); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            c + (radius * cos(i *  twicePi / triangleAmount)),
+            d + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+
+    GLfloat e=.52f;
+    GLfloat f=.84f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(e, f); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            e + (radius * cos(i *  twicePi / triangleAmount)),
+            f + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+
+    GLfloat g=.6f;
+    GLfloat h=.86f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(g, h); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            e + (radius * cos(i *  twicePi / triangleAmount)),
+            f + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+    glPopMatrix();
+
+
+
+
 
 }
 
-void cloud2(){
+void cloud2()
+{
+    glPushMatrix();
+    glTranslatef(positionOfCloud2,-0.02f,0.0f);
+    int i;
+
+    GLfloat x=-.5f;
+    GLfloat y=0.84f;
+    GLfloat radius=0.05f;
+    int triangleAmount=20;
+    GLfloat twicePi=2.0f * PI;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glColor3ub(255,240,255);
+    glVertex2f(x,y);
+    for(i=0; i<=triangleAmount; i++)
+    {
+        glVertex2f(
+            x+(radius*cos(i*twicePi/triangleAmount)),
+            y+(radius*sin(i*twicePi/triangleAmount))
+        );
+    }
+
+    glEnd();
+
+    GLfloat a=-.55f;
+    GLfloat b=.81f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(a, b); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            a + (radius * cos(i *  twicePi / triangleAmount)),
+            b + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+
+    glEnd();
+
+    GLfloat c=-.45f;
+    GLfloat d=.81f;
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(c, d); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            c + (radius * cos(i *  twicePi / triangleAmount)),
+            d + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+
+    GLfloat e=-.52f;
+    GLfloat f=.78f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(e, f); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            e + (radius * cos(i *  twicePi / triangleAmount)),
+            f + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+
+    GLfloat g=-.6f;
+    GLfloat h=.80f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(g, h); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            e + (radius * cos(i *  twicePi / triangleAmount)),
+            f + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+    glPopMatrix();
+
 }
 
 
@@ -304,40 +471,28 @@ void nightsky()
 void myDisplay1(void)
 {
 
-glClearColor(0.53f,0.81f,0.92f,0.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
-	glLoadIdentity();
-	  daysky();
-	  stand();
-	  sun();
-
     glClearColor(0.53f,0.81f,0.92f,0.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
     daysky();
-
+    stand();
     sun();
-
-
+    cloud1();
+    cloud2();
     glFlush();
+
 }
 void myDisplay2(void)
 {
-
-   glClear(GL_COLOR_BUFFER_BIT);
-   glLoadIdentity();
-   nightsky();
-   moon();
-   stand();
-   stars();
-   glFlush();
 
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
     nightsky();
     moon();
+    stand();
     stars();
     glFlush();
+
 
 }
 void backGround()
@@ -583,9 +738,10 @@ void display()
 
         stand();
 
-sun();
-
         sun();
+        cloud1();
+        cloud2();
+
 
 
 
