@@ -84,127 +84,7 @@ void circle(GLfloat x, GLfloat y, GLfloat radius) // to draw circle
     }
     glEnd();
 }
-////sun
 
-
-//sun movement
-
-
-void sun()
-{
-    int i;
-
-    GLfloat x= 0.23f;
-    GLfloat y=0.23f;
-    GLfloat radius =0.4f;
-    int triangleAmount = 55;
-    glColor3ub(243, 249, 57);
-    GLfloat twicePi = 2.0f * PI;
-    glBegin(GL_TRIANGLE_FAN);
-    glVertex2f(x, y);
-    for(i = 0; i <= triangleAmount; i++)
-    {
-        glVertex2f(
-            x + (radius * cos(i *  twicePi / triangleAmount)),
-            y + (radius * sin(i * twicePi / triangleAmount))
-        );
-    }
-    glEnd();
-
-}
-
-void moon()
-{
-    int i;
-    GLfloat x= 0.3f;
-    GLfloat y= 0.5f;
-    GLfloat radius= 0.17f;
-    int triangleAmount = 55;
-    glColor3ub(243, 241, 230 );
-    GLfloat twicePi = 2.0f * PI;
-    glBegin(GL_TRIANGLE_FAN);
-    glVertex2f(x, y);
-    for(i = 0; i <= triangleAmount; i++)
-    {
-        glVertex2f(
-            x + (radius * cos(i *  twicePi / triangleAmount)),
-            y + (radius * sin(i * twicePi / triangleAmount))
-        );
-    }
-    glEnd();
-
-}
-
-void stars()
-{
-
-    glPointSize(3.7);
-    glBegin(GL_POINTS);
-    glVertex2f(.45f,.3f);
-    glVertex2f(.66f,.9f);
-    glVertex2f(.79f,.8f);
-    glVertex2f(.45f,.7f);
-    glVertex2f(.77f,.6f);
-    glVertex2f(.67f,.8f);
-    glVertex2f(.56f,.9f);
-    glVertex2f(.7f,.6f);
-
-    glVertex2f(-.4f,.8f);
-    glVertex2f(-.5f,.6f);
-    glVertex2f(-.3f,.5f);
-    glVertex2f(-.2f,.8f);
-    glVertex2f(-.4f,.8f);
-    glVertex2f(-.7f,.5f);
-    glVertex2f(-.6f,.7f);
-    glVertex2f(-.2f,.8f);
-
-    glVertex2f(-.1f,.9f);
-    glVertex2f(-.3f,.85f);
-    glVertex2f(-.72f,.92f);
-    glVertex2f(-.8f,.84f);
-
-    glVertex2f(-.9f,.84f);
-    glVertex2f(-.6f,.94f);
-    glVertex2f(-.9f,.2f);
-
-    glEnd();
-}
-
-void stand()
-{
-
-    //left stand
-
-    glPushMatrix();
-    glScaled(1,1.5,0); //x,y,z axies
-    glColor3ub(80, 156, 241);
-
-    quad(-.360, -.37, -.334, -.37,-.334, -.138, -.360, -.138);
-    glPopMatrix();
-//right
-
-    glPushMatrix();
-    glScaled(1,1.5,0);
-    glRotated(180,0,1,0);
-    glTranslated(.25,0,0);
-    glColor3ub(247, 144, 42);
-
-    quad( -.360, -.37,-.334, -.37,-.334, -.138,-.360, -.138 );
-
-    glPopMatrix();
-
-//quads
-    quad( -.345, -.37,.1, -.37,.1, -.2,-.345, -.2 );
-    glColor3ub(0,0,0 );
-    quad( -.345, -.37, .1, -.37,.1, -.2,-.345, -.2 );
-    glPushMatrix();
-    glColor3ub(0,0,0);
-    printText(-.25,-.3,travel);
-    glPopMatrix();
-
-
-
-}
 
 
 
@@ -471,8 +351,7 @@ void myDisplay1(void)
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
     daysky();
-    stand();
-    sun();
+
 
     cloud1();
     cloud2();
@@ -489,9 +368,6 @@ void myDisplay2(void)
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
     nightsky();
-    moon();
-    stand();
-    stars();
     glFlush();
 
 
@@ -517,80 +393,13 @@ void backGround()
 
 }
 
-//rain_ADDED
-
-void rain()
-{
-    float x = -1.0;
-    float temp = 0.9;
-    for (int j=0; j<20; j++)
-    {
-        float y = temp;
-        for (int l = 0; l< 30; l ++)
-        {
-            glPushMatrix();
-            glTranslated(rainPosX, rainPos, 0.0f);
-            glBegin(GL_LINES);
-            glColor3ub(222, 222, 222);
-            glVertex2f(x,y);
-            x+= 0.05;
-            y+= 0.1;
-            glVertex2f(x,y);
-            glEnd();
-            y=temp;
-            x=x+0.1;
-            glPopMatrix();
-        }
-        temp -= 0.2;
-        x= -1;
-    }
-    glEnd();
-}
-
-
-
-//TrainLine
-
-void trainLine()
-{
-    glPushMatrix();
-    glTranslated(0,-0.455, 0);
-    glPushMatrix();
-    glScaled(1,10,1);
-    glTranslated(0, 0.448, 0);
-    glColor3ub(128, 116, 120);
-    quad( -1,-.5,-1,-.488,1,-.488,1,-.5);
-    glPopMatrix();
-    glColor3ub(82, 55, 48);
-    quad( -1, -0.5, -1, 0.488, 1, -0.488, 1, -0.5);
-    glPushMatrix();
-    glTranslated(0, .06, 0);
-    quad( -1,-.488,-1,-.5,1,-.5,1,-.488);
-    glPopMatrix();
-
-    glPopMatrix();
-}
 
 void keyboardHandle(unsigned char key, int x, int y)
 {
 
     switch (key)
     {
-    case 'm':
-        anglel_M+=speed_M;
-        speed_M+= 0.75;
-        update(0);
-        break;
-    case 'M':
-        speed_M=0.0;
-        break;
-    case 'b':
-        speed_N+=0.4;
-        update(0);
-        break;
-    case 'B':
-        speed_N=0.0;
-        break;
+
 
 
 
@@ -614,164 +423,7 @@ void keyboardHandle(unsigned char key, int x, int y)
         break;
     }
 }
-/// bogy Mostafiz
-void bogy()
-{
-    glPushMatrix();
-    glBegin(GL_POLYGON);
-    glColor3ub(128,15,46);
-    glVertex2f(.0f,.1f);
-    glVertex2f(.02f,.12f);
-    glVertex2f(.02f,.32f);
-    glVertex2f(-.38f,.32f);
-    glVertex2f(-.4f,.3f);
-    glVertex2f(0.0f,0.3f);
-    glEnd();
 
-    glBegin(GL_QUADS);
-    glColor3ub(153,170,177);
-    glVertex2f(-.4f,.3f);
-    glVertex2f(-.4f,.1f);
-    glVertex2f(.0f,.1f);
-    glVertex2f(.0f,.3f);
-    glEnd();
-
-
-    glBegin(GL_QUADS);
-    if(night)
-    {
-        glColor3ub(247, 240, 188);
-    }
-    else
-    {
-        glColor3ub(37,47,53);
-    }
-    glVertex2f(-.35f,.23f);
-    glVertex2f(-.35f,.18f);
-    glVertex2f(-.3f,.18f);
-    glVertex2f(-0.3f,.23f);
-    glEnd();
-
-
-    glPushMatrix();
-    glTranslated(.07,0,0);
-    glBegin(GL_QUADS);
-
-    glVertex2f(-.35f,.23f);
-    glVertex2f(-.35f,.18f);
-    glVertex2f(-.3f,.18f);
-    glVertex2f(-0.3f,.23f);
-    glEnd();
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslated(.14,0,0);
-    glBegin(GL_QUADS);
-
-    glVertex2f(-.35f,.23f);
-    glVertex2f(-.35f,.18f);
-    glVertex2f(-.3f,.18f);
-    glVertex2f(-0.3f,.23f);
-    glEnd();
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslated(.21,0,0);
-    glBegin(GL_QUADS);
-
-    glVertex2f(-.35f,.23f);
-    glVertex2f(-.35f,.18f);
-    glVertex2f(-.3f,.18f);
-    glVertex2f(-0.3f,.23f);
-    glEnd();
-    glPopMatrix();
-
-    glPushMatrix();
-    glColor3ub(128,15,46);
-    glTranslated(0,-.1,0);
-    glScalef(.4f,.4f,0.0f);
-    circle(-.7,.5,.1);
-    glTranslated(0.4f,0.0f,0.0f);
-    circle(-.7,.5,.1);
-    glPopMatrix();
-    glPopMatrix();
-
-
-
-}
-
-
-/// completeTrain
-void completeTrain()
-{
-    glPushMatrix();
-    glTranslated(trainPos,-1,0);
-    bogy();
-
-    glPushMatrix();
-    glTranslated(.45,0,0);
-    bogy();
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslated(.9,0,0);
-    bogy();
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslated(-.45,0,0);
-    bogy();
-
-    glPushMatrix();
-    glTranslated(0,.14,0);
-    glBegin(GL_QUADS);
-    glColor3ub(37,47,53);
-    glVertex2f(-.35f,.25f);
-    glVertex2f(-.35f,.18f);
-    glVertex2f(-.3f,.18f);
-    glVertex2f(-0.3f,.25f);
-    glEnd();
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslated(.35,-.05,0);
-    glBegin(GL_QUADS);
-    glColor3ub(0,0,0);
-    glVertex2f(-.35f,.23f);
-    glVertex2f(-.35f,.18f);
-    glVertex2f(-.3f,.18f);
-    glVertex2f(-0.3f,.23f);
-    glEnd();
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslated(.8,-.05,0);
-    glBegin(GL_QUADS);
-    glColor3ub(0,0,0);
-    glVertex2f(-.35f,.23f);
-    glVertex2f(-.35f,.18f);
-    glVertex2f(-.3f,.18f);
-    glVertex2f(-0.3f,.23f);
-    glEnd();
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslated(1.25,-.05,0);
-    glBegin(GL_QUADS);
-    glColor3ub(0,0,0);
-    glVertex2f(-.35f,.23f);
-    glVertex2f(-.35f,.18f);
-    glVertex2f(-.3f,.18f);
-    glVertex2f(-0.3f,.23f);
-    glEnd();
-    glPopMatrix();
-
-    glPopMatrix();
-    glPopMatrix();
-
-
-
-}
 
 
 
@@ -785,8 +437,7 @@ void display()
         glClear(GL_COLOR_BUFFER_BIT);
         glLoadIdentity();
         nightsky();
-        moon();
-        stars();
+
 
     }
     else
@@ -796,9 +447,7 @@ void display()
         glLoadIdentity();
         daysky();
 
-        stand();
 
-        sun();
         cloud1();
         cloud2();
 
@@ -825,17 +474,16 @@ void display()
     glTranslated(.2,0,0);
 
     glPopMatrix();
-    //train...
 
 
-    trainLine();
+
+
     glPushMatrix();
-    completeTrain();
     glPopMatrix();
     glPushMatrix();
     if(vrain)
     {
-        rain();
+
     }
     glPopMatrix();
 
@@ -852,8 +500,6 @@ int main(int argc, char** argv)
     cout<<"\n Press 'Shift n' for Day mood.\n";
     cout<<"\n Press 'r' for start the rain.\n";
     cout<<"\n Press 'Shift r' for stop the rain.\n";
-    cout<<"\n Press 'w' for Train move forward.\n";
-    cout<<"\n Press 's' for Train move backward.\n";
 
     cout<<"\n Press 'e' for exit.\n";
 
