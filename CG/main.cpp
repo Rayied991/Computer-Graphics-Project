@@ -261,11 +261,180 @@ void cloudAnimation2(int value)
 }
 void cloud1()
 {
+<<<<<<< HEAD
+    glPushMatrix();
+    glTranslatef(positionOfCloud1,0.05f,0.0f);
+    int i;
+
+    GLfloat x=.5f;
+    GLfloat y=0.90f;
+    GLfloat radius=0.05f;
+    int triangleAmount=20;
+    GLfloat twicePi=2.0f * PI;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glColor3ub(255,240,255);
+    glVertex2f(x,y);
+    for(i=0; i<=triangleAmount; i++)
+    {
+        glVertex2f(
+            x+(radius*cos(i*twicePi/triangleAmount)),
+            y+(radius*sin(i*twicePi/triangleAmount))
+        );
+    }
+
+    glEnd();
+
+    GLfloat a=.55f;
+    GLfloat b=.87f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(a, b); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            a + (radius * cos(i *  twicePi / triangleAmount)),
+            b + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+
+    glEnd();
+
+    GLfloat c=.45f;
+    GLfloat d=.87f;
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(c, d); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            c + (radius * cos(i *  twicePi / triangleAmount)),
+            d + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+
+    GLfloat e=.52f;
+    GLfloat f=.84f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(e, f); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            e + (radius * cos(i *  twicePi / triangleAmount)),
+            f + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+
+    GLfloat g=.6f;
+    GLfloat h=.86f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(g, h); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            e + (radius * cos(i *  twicePi / triangleAmount)),
+            f + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+    glPopMatrix();
+
+
+
+
+=======
+>>>>>>> main
 
 }
 
 void cloud2()
 {
+<<<<<<< HEAD
+    glPushMatrix();
+    glTranslatef(positionOfCloud2,-0.02f,0.0f);
+    int i;
+
+    GLfloat x=-.5f;
+    GLfloat y=0.84f;
+    GLfloat radius=0.05f;
+    int triangleAmount=20;
+    GLfloat twicePi=2.0f * PI;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glColor3ub(255,240,255);
+    glVertex2f(x,y);
+    for(i=0; i<=triangleAmount; i++)
+    {
+        glVertex2f(
+            x+(radius*cos(i*twicePi/triangleAmount)),
+            y+(radius*sin(i*twicePi/triangleAmount))
+        );
+    }
+
+    glEnd();
+
+    GLfloat a=-.55f;
+    GLfloat b=.81f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(a, b); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            a + (radius * cos(i *  twicePi / triangleAmount)),
+            b + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+
+    glEnd();
+
+    GLfloat c=-.45f;
+    GLfloat d=.81f;
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(c, d); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            c + (radius * cos(i *  twicePi / triangleAmount)),
+            d + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+
+    GLfloat e=-.52f;
+    GLfloat f=.78f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(e, f); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            e + (radius * cos(i *  twicePi / triangleAmount)),
+            f + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+
+    GLfloat g=-.6f;
+    GLfloat h=.80f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(g, h); // center of circle
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            e + (radius * cos(i *  twicePi / triangleAmount)),
+            f + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+    glPopMatrix();
+
+=======
+>>>>>>> main
 }
 
 
@@ -306,8 +475,14 @@ void myDisplay1(void)
     daysky();
     stand();
     sun();
+<<<<<<< HEAD
+    cloud1();
+    cloud2();
+=======
 
+>>>>>>> main
     glFlush();
+
 }
 
 void myDisplay2(void)
@@ -588,6 +763,9 @@ void display()
         stand();
 
         sun();
+        cloud1();
+        cloud2();
+
 
 
 
