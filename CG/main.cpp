@@ -261,7 +261,7 @@ void cloudAnimation2(int value)
 }
 void cloud1()
 {
-<<<<<<< HEAD
+
     glPushMatrix();
     glTranslatef(positionOfCloud1,0.05f,0.0f);
     int i;
@@ -345,14 +345,13 @@ void cloud1()
 
 
 
-=======
->>>>>>> main
+
 
 }
 
 void cloud2()
 {
-<<<<<<< HEAD
+
     glPushMatrix();
     glTranslatef(positionOfCloud2,-0.02f,0.0f);
     int i;
@@ -433,8 +432,7 @@ void cloud2()
     glEnd();
     glPopMatrix();
 
-=======
->>>>>>> main
+
 }
 
 
@@ -475,12 +473,12 @@ void myDisplay1(void)
     daysky();
     stand();
     sun();
-<<<<<<< HEAD
+
     cloud1();
     cloud2();
-=======
 
->>>>>>> main
+
+
     glFlush();
 
 }
