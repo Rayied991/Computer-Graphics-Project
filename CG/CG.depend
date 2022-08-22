@@ -235,3 +235,12 @@
 1341006774 c:\program files (x86)\codeblocks\mingw\include\math.h
 	<_mingw.h>
 
+1661182862 source:c:\users\asus\onedrive\desktop\computer-graphics-project\cg\main.cpp
+	<iostream>
+	<GL/gl.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<math.h>
+	<windows.h>
+	<mmsystem.h>
+
