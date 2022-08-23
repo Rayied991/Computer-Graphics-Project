@@ -1,5 +1,5 @@
-# Computer-Graphics-Project
-##Course Name: Computer Graphics
+<h1> Computer-Graphics-Project</h1>
+Course Name: Computer Graphics
 
 ###Tools Used:
 
@@ -32,6 +32,6 @@ In this project we have added these functionalities:
     6.Press 'w' for Train move forward.
     7.Press 's' for Train move backward.
     8.Press 'e' for exit.
+![Screenshot (100)](https://user-images.githubusercontent.com/76652122/186083163-45072a4f-5258-429b-b24c-b0a14aa32458.png)
 
 
-![Screenshot (100)](https://user-images.githubusercontent.com/76652122/186082856-a373552d-24e5-4199-bd9b-933d90ff5a18.png)
