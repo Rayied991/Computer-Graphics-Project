@@ -34,3 +34,4 @@ In this project we have added these functionalities:
     8.Press 'e' for exit.
 
 
+![Screenshot (100)](https://user-images.githubusercontent.com/76652122/186082856-a373552d-24e5-4199-bd9b-933d90ff5a18.png)
