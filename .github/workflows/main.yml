@@ -17,5 +17,5 @@ jobs:
         with:
           args: >
               -Dsonar.organization=rayied991
-              -Dsonar.projectKey=JavaScript
+              -Dsonar.projectKey=Computer-Graphics-Project
              
